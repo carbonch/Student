@@ -10,15 +10,38 @@ package softwaredesign;
  * @author Christopher
  */
 public class Student {
+    private final int CURRENT_YEAR = 2019;
     private String name;
     private int age;
     private int id;
+    private String dob;
     
     public Student(String newName, int newAge, int newId)
     {
         name = newName;
         age = newAge;
         id = newId;
+    }
+    
+    public Student(String newName, String dateOfBirth, int newId)
+    {
+        name = newName;
+        age = calcAgeFromDob(dateOfBirth);
+        id = newId;
+    }
+    
+    public Student(String newName, String dateOfBirth, int newAge, int newId)
+    {
+        name = newName;
+        dob = dateOfBirth;
+        age = newAge;
+        id = newId;
+    }
+    
+    public int calcAgeFromDob(String dateOfBirth)
+    {
+        int birthYear = Integer.parseInt(dateOfBirth.substring(6));
+        return CURRENT_YEAR - birthYear;
     }
 
     /**
